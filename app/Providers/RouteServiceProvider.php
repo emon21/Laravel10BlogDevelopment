@@ -19,6 +19,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
+    // protected $redirectTo = RouteServiceProvider::HOME;
+
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
@@ -35,6 +38,14 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+                //custom Route
+
+                Route::middleware('web')
+                ->group(base_path('routes/admin.php'));
+
+                Route::middleware('web')
+                ->group(base_path('routes/website.php'));
         });
     }
 }
