@@ -79,3 +79,9 @@ Route::delete('/comment/delete/{comment}',[CommentController::class,'destroy'])-
 // ===================== User Controller Route End =====================
 
 
+// Route::group(['prefix' => 'website','middleware' => ['auth']],function(){
+
+
+
+// });
+
