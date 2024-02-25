@@ -5,14 +5,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/font-awesome-line-awesome/css/all.min.css" integrity="sha512-dC0G5HMA6hLr/E1TM623RN6qK+sL8sz5vB+Uc68J7cBon68bMfKcvbkg6OqlfGHo1nMmcCxO5AinnRTDhWbWsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('frontend') }}/fonts/icomoon/style.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/magnific-popup.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/jquery-ui.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.min.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="{{ asset('frontend') }}/fonts/flaticon/font/flaticon.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/aos.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css">
 </head>
@@ -32,6 +33,7 @@
 <script src="{{ asset('frontend') }}/js/bootstrap-datepicker.min.js"></script>
 <script src="{{ asset('frontend') }}/js/aos.js"></script>
 <script src="{{ asset('frontend') }}/js/main.js"></script>
+
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>

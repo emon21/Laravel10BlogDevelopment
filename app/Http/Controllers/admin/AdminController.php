@@ -9,15 +9,21 @@ class AdminController extends Controller
 {
     //
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     //admin after login
     public function admin(){
 
-        return view('backend.admin');
+        return view('backend.dashboard');
+
+    }
+    //admin after login
+    public function adminlogin(){
+
+        return view('backend.adminlogin');
 
     }
 

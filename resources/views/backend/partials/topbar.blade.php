@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -10,6 +10,11 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ route('website') }}" target="_blank" class="nav-link"><i class="fas fa-globe"></i></a>
+      </li>
+
+
     </ul>
 
     <!-- Right navbar links -->
@@ -125,9 +130,9 @@
 
         <li class="dropdown user user-menu ml-2 pt-2 text-white">
             <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown" aria-expanded="false">
-                <img src="{{ asset('profile/default.jpg') }}" class="user-image"
+                <img src="@if(Auth::user()->image) {{ asset(Auth::user()->image) }} @else {{ asset('profile/default.jpg') }} @endif" class="user-image"
                     alt="User Image">
-                <span class="hidden-xs text-success">Hi , emon</span>
+                <span class="hidden-xs text-success">Hi , {{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu pt-4 bg-info mt-2">
                 <!-- User image -->
@@ -137,7 +142,7 @@
 
                     <p>
 
-                       Emon - Web Developer
+                       {{ Auth::user()->name }} - Web Developer
                         <small>Member since demo</small>
                     </p>
                 </li>
@@ -148,10 +153,10 @@
                     </div>
                     <div class="float-right">
                         {{-- <a href="#" class="btn btn-outline-danger text-white btn-flat">Sign out</a> --}}
-                        <a class="btn btn-outline-danger btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <a class="btn btn-outline-danger btn-flat" id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="logout-form"  action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </div>

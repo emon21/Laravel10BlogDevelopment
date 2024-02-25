@@ -1,0 +1,148 @@
+@extends('backend.layouts.admin_master')
+@section('title','User Profile')
+@section('admin_content')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper bg-white">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Profile Setting</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Profile Page</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-item-center justify-content-between">
+                            <h2 class="card-title py-2 pt-2">User Profile</h2>
+                            <a href="{{ route('user.index') }}" class="btn btn-outline-primary">Go Back User List</a>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-sm-9 ">
+                                <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="card-body">
+                                        <div class="row">
+                                              <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="category_namennameame">User Name:</label>
+                                                    <input type="text" class="form-control mt-1 @error('name') is-invalid @enderror" value="{{ $user->name }}"  id="name" placeholder="Write Your Name..." name="name">
+                                                    @error('name')
+                                                        <span class="invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <label for="email">User Email:</label>
+                                                    <input type="text" class="form-control mt-1 @error('email') is-invalid @enderror" value="{{ $user->email }}"  id="email" placeholder="Write Your Email..." name="email">
+                                                    @error('email')
+                                                        <span class="invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <label for="password">Password <small>(Enter password if you change)</small></label>
+                                                    <input type="password" class="form-control @error('password') is-invalid @enderror" value=""  id="password" placeholder="Your password..." name="password">
+                                                    @error('password')
+                                                        <span class="invalid-feedback">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="">User Image</label>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" name="image" id="file-input">
+                                                        <label class="custom-file-label" >Choose file</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="">Description</label>
+                                                    <textarea class="form-control" name="description" id=""  rows="5" placeholder="Write your profile Description">{{ $user->description }}</textarea>
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-outline-success mt-2">Update Profile</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                            </div><!-- /.col -->
+                            <div class="col-sm-3">
+                                <div class="card-body">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            {{-- <img src="" class="img-fluid img-rounded" alt=""> --}}
+                                            <div style="width: 200px;height: 200px; overflow: hidden;" class="m-auto">
+                                                <img src="{{ asset($user->image) }}" class="mx-auto d-block img-fluid rounded-circle img-rounded" id="preview-image">
+                                            </div>
+                                            <div class="mt-2">
+                                                <h4 class="">{{ $user->name }}</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.col -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<script>
+
+    const fileInput = document.getElementById("file-input");
+    const previewImage = document.getElementById("preview-image");
+
+        fileInput.addEventListener("change", function() {
+        const file = this.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function() {
+            previewImage.setAttribute("src", this.result);
+            previewImage.style.display = "block";
+        });
+
+        reader.readAsDataURL(file);
+        });
+
+      //custom file
+
+      $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+</script>
+@endsection

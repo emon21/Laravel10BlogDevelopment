@@ -29,8 +29,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
 
     /**
@@ -63,4 +63,6 @@ class LoginController extends Controller
             return redirect()->back()->with('error','Invalid email or password');
         }
     }
+
+
 }

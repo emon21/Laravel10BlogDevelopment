@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('role_as')->nullable();
+            $table->string ('image')->nullable();
+            $table->string('description')->nullable();
+            $table->string('slug')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

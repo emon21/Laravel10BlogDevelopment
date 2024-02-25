@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image','description','slug','role_as'
     ];
 
     /**
@@ -42,4 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    // public function getNameAttribute()
+    // {
+
+    //     return $this->name;
+    // }
 }
